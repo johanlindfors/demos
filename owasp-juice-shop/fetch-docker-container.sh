@@ -1,1 +1,0 @@
-docker pull bkimminich/juice-shop:latest-arm
