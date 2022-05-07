@@ -17,22 +17,22 @@ public class BankingController : ControllerBase
     }
 
     //[Authorize]
-    [HttpGet("transfer/{id:int}/{from}/{to}")]
+    [HttpGet("transfer/{amount:int}/{from}/{to}")]
     public async Task<int> Transfer(int amount, string from, string to)
     {
             var fromAccount = await _accountRepository.FindByIdAsync(from);
             var toAccount = await _accountRepository.FindByIdAsync(to);
-            
+
             if(fromAccount.Balance < amount) {
                 throw new ArgumentException("Insufficient funds");
             }
-            
-            fromAccount.Balance -= amount;
-            await _accountRepository.SaveAsync(fromAccount);
-            
+
             toAccount.Balance += amount;
             await _accountRepository.SaveAsync(toAccount);
-            
+
+            fromAccount.Balance -= amount;
+            await _accountRepository.SaveAsync(fromAccount);
+
             return fromAccount.Balance;
     }
 }
